@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
@@ -19,14 +20,34 @@ public class PersonListPanel extends UiPart<Region> {
 
     @FXML
     private ListView<Person> personListView;
-
+    private final PersonDetailsWindow personDetailsWindow;
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
      */
-    public PersonListPanel(ObservableList<Person> personList) {
+    public PersonListPanel(ObservableList<Person> personList, PersonDetailsWindow personDetailsWindow) {
         super(FXML);
+        this.personDetailsWindow = personDetailsWindow;
         personListView.setItems(personList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
+        setEventHandlers();
+    }
+    /**
+     * Sets event handlers for the person list view.
+     */
+    private void setEventHandlers() {
+        this.personListView.setOnMouseClicked(this::handlePersonClick);
+    }
+
+    /**
+     * Handles the mouse click event on the person list view.
+     *
+     * @param event The mouse event.
+     */
+    private void handlePersonClick(MouseEvent event) {
+        Person selectedPerson = personListView.getSelectionModel().getSelectedItem();
+        if (selectedPerson != null) {
+            personDetailsWindow.show(selectedPerson);
+        }
     }
 
     /**
