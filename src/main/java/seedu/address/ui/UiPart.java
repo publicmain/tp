@@ -85,4 +85,5 @@ public abstract class UiPart<T> {
         return requireNonNull(fxmlFileUrl);
     }
 
+
 }

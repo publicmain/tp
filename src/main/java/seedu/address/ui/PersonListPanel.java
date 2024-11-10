@@ -21,6 +21,7 @@ public class PersonListPanel extends UiPart<Region> {
 
     @FXML
     private ListView<Person> personListView;
+    private MainWindow mainWindow;
     private final PersonDetailsWindow personDetailsWindow;
 
     /**
@@ -29,9 +30,10 @@ public class PersonListPanel extends UiPart<Region> {
      * @param personList          The observable list of persons to display.
      * @param personDetailsWindow The window to display person details.
      */
-    public PersonListPanel(ObservableList<Person> personList, PersonDetailsWindow personDetailsWindow) {
+    public PersonListPanel(ObservableList<Person> personList, PersonDetailsWindow personDetailsWindow, MainWindow mainWindow) {
         super(FXML);
         this.personDetailsWindow = personDetailsWindow;
+        this.mainWindow = mainWindow;
         personListView.setItems(personList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
 
@@ -62,18 +64,43 @@ public class PersonListPanel extends UiPart<Region> {
     }
 
     /**
+     * Requests keyboard focus on the person list view component.
+     *
+     * This method transfers focus to the `personListView`, allowing it to receive keyboard input.
+     */
+    public void requestFocus() {
+        personListView.requestFocus();
+    }
+
+    /**
      * Handles key press events on the person list view.
      *
      * @param event The key event.
      */
     private void handleKeyPress(KeyEvent event) {
         switch (event.getCode()) {
-        case ENTER:
-            openPersonDetailsWindow();
-            break;
-        default:
-            break;
+            case ENTER:
+                openPersonDetailsWindow();
+                break;
+            case UP:
+                if (personListView.getSelectionModel().getSelectedIndex() == 0) {
+                    mainWindow.focusOnCommandBox();
+                    event.consume();
+                }
+                break;
+            default:
+                break;
         }
+    }
+
+    /**
+     * Selects the first item in the person list view.
+     *
+     * This method uses the selection model of `personListView` to select the first item in the list,
+     * making it the current selection if available.
+     */
+    public void selectFirst() {
+        personListView.getSelectionModel().selectFirst();
     }
 
     /**

@@ -31,6 +31,7 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
+    private CommandBox commandBox;
     private PersonListPanel personListPanel;
     private PersonDetailsWindow personDetailsWindow;
     private ResultDisplay resultDisplay;
@@ -111,8 +112,11 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
         logger.info("Filling inner parts of MainWindow");
+        commandBox = new CommandBox(this::executeCommand,this);
+        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+        logger.fine("CommandBox initialized and added to placeholder");
 
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList(), personDetailsWindow);
+        personListPanel = new PersonListPanel(logic.getFilteredPersonList(), personDetailsWindow, this);
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
         logger.fine("PersonListPanel initialized and added to placeholder");
 
@@ -123,10 +127,6 @@ public class MainWindow extends UiPart<Stage> {
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
         logger.fine("StatusBarFooter initialized and added to placeholder");
-
-        CommandBox commandBox = new CommandBox(this::executeCommand);
-        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
-        logger.fine("CommandBox initialized and added to placeholder");
 
         logger.info("All inner parts filled successfully");
     }
@@ -193,6 +193,25 @@ public class MainWindow extends UiPart<Stage> {
     void show() {
         logger.info("Showing main window");
         primaryStage.show();
+    }
+
+    /**
+     * Sets the keyboard focus on the person list panel.
+     *
+     * This method requests focus for the `personListPanel`, making it the active component for keyboard interactions.
+     */
+    public void focusOnPersonList() {
+        personListPanel.requestFocus();
+        personListPanel.selectFirst();
+    }
+
+    /**
+     * Requests keyboard focus on the command box component.
+     *
+     * This method sets the focus to the `commandBox`, enabling it to receive keyboard input from the user.
+     */
+    public void focusOnCommandBox() {
+        commandBox.requestFocus();
     }
 
     /**

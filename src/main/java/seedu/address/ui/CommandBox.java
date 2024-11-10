@@ -3,6 +3,7 @@ package seedu.address.ui;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Region;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -17,18 +18,35 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
 
     private final CommandExecutor commandExecutor;
+    private final MainWindow mainWindow;
 
     @FXML
     private TextField commandTextField;
 
     /**
-     * Creates a {@code CommandBox} with the given {@code CommandExecutor}.
+     * Creates a {@code CommandBox} with the given {@code CommandExecutor and MainWindow}.
      */
-    public CommandBox(CommandExecutor commandExecutor) {
+    public CommandBox(CommandExecutor commandExecutor, MainWindow mainWindow) {
         super(FXML);
         this.commandExecutor = commandExecutor;
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
+        this.mainWindow = mainWindow;
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
+        commandTextField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.DOWN) {
+                mainWindow.focusOnPersonList();
+                event.consume();
+            }
+        });
+    }
+
+    /**
+     * Requests keyboard focus on the command text field.
+     *
+     * This method transfers focus to the `commandTextField`, making it ready for user input.
+     */
+    public void requestFocus() {
+        commandTextField.requestFocus();
     }
 
     /**
