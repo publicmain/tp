@@ -173,10 +173,10 @@ with(this){return _c('h3',{attrs:{"id":"4-9-sorting-employees-sort"}},[_v("4.9 S
 with(this){return _c('p',[_v("Format: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("sort TAG")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_v("Sorts the employees according to the specified tags.")]),_v(" "),_c('li',[_v("You can specify multiple tags for sorting.")]),_v(" "),_c('li',[_v("If no tags are specified, all employees will be displayed in their original order.")])])}
+with(this){return _c('ul',[_c('li',[_v("Sorts the employees according to the specified tags.")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("sort friend")]),_v(" Sorts and displays all employees tagged as friend.")]),_v(" "),_c('li',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("sort friend family")]),_v(" Sorts and displays employees tagged as either friend or family.")])])}
+with(this){return _c('ul',[_c('li',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("sort friend")]),_v(" Sorts and displays all employees tagged as friend.")])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('a',{attrs:{"href":"/tp/images/sort.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/images/sort.png","alt":"image","width":"1200"}})])])}
@@ -287,6 +287,6 @@ with(this){return _c('h2',{attrs:{"id":"7-known-issues"}},[_v("7 Known issues"),
 with(this){return _c('ol',[_c('li',[_c('strong',[_v("When using multiple screens")]),_v(", if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("preferences.json")]),_v(" file created by the application before running the application again.")]),_v(" "),_c('li',[_c('strong',[_v("If you minimize the Help Window")]),_v(" and then run the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("help")]),_v(" command (or use the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Help")]),_v(" menu, or the keyboard shortcut "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("F1")]),_v(") again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.")]),_v(" "),_c('li',[_c('strong',[_v("When using "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("count")]),_v(" command")]),_v(", follow the convention of "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("tag/TAG")]),_v(" and "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("name/NAME")]),_v(", rather than the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("t/TAG")]),_v(" and "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("n/NAME")]),_v(" used for other commands. Do be careful of this inconsistency.")]),_v(" "),_c('li',[_c('strong',[_v("Does not track maternity leave up to 6 months")]),_v(", which is not part of annual leave.")])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.5.3")]),_v(", generated on Tue, 12 Nov 2024, 10:55:09 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.5.3")]),_v(", generated on Tue, 12 Nov 2024, 11:12:10 GMT+8]")])])])}
 }];
   
